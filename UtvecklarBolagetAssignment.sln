@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32002.261
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StringComparison", "UtvecklarBolagetAssignment\StringComparison.csproj", "{B6667EEF-F360-4874-8709-36BC8D01FE96}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlobSledgeIssue", "BlobSledgeIssue\BlobSledgeIssue.csproj", "{47E63921-7A7F-4F9A-80A7-3E02E30ABCE2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B6667EEF-F360-4874-8709-36BC8D01FE96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6667EEF-F360-4874-8709-36BC8D01FE96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6667EEF-F360-4874-8709-36BC8D01FE96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6667EEF-F360-4874-8709-36BC8D01FE96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47E63921-7A7F-4F9A-80A7-3E02E30ABCE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47E63921-7A7F-4F9A-80A7-3E02E30ABCE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47E63921-7A7F-4F9A-80A7-3E02E30ABCE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47E63921-7A7F-4F9A-80A7-3E02E30ABCE2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E60188FF-3023-421C-B06B-52061D169CBA}
+	EndGlobalSection
+EndGlobal
