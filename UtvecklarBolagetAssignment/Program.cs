@@ -12,7 +12,7 @@ namespace StringComparison
             string str2 = string.Empty;
 
             
-            Console.WriteLine("Enter the string Compare To:");
+            Console.WriteLine("Enter the string Compare To:" );
             str1 = Console.ReadLine();
 
             Console.WriteLine("Enter the string Compare With:");
