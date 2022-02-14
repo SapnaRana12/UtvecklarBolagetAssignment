@@ -9,26 +9,25 @@ namespace WaterinMatirx
         private APICaller api;
         public static int ways { get; set; }
         public static int allways { get; set; }
-        public static Dictionary<Tuple<int,int>, int> possiblewaydict = new Dictionary<Tuple<int, int>, int>();
+        public static Dictionary<Tuple<int, int>, int> possiblewaydict = new Dictionary<Tuple<int, int>, int>();
         static void Main(string[] args)
         {
             APICaller api = new APICaller();
             int x = api.GetStartX();
             int y = api.GetStartY();
             int matrixwidth = api.GetMatrixWidth();
-            int matrixHeight = api.GetMatrixHeight();
-            List<int> lstGetRow = api.GetRow(x);
-            int value = api.GetValue(x, y);
+            int matrixHeight = api.GetMatrixHeight();         
+            
 
-            ways = AllTheStartWay(x, y, matrixwidth, matrixHeight);            
-          getallthePossibleWayswithDict(x, y, matrixwidth, matrixHeight);
-            allways  = possiblewaydict.Values.Count;
+            ways = AllTheStartWay(x, y, matrixwidth, matrixHeight);
+            GetAllThePossibleWays(x, y, matrixwidth, matrixHeight);
+            allways = possiblewaydict.Values.Count + 1;// +1 for adding starting index 
             printarray();
             InitialDirections();
             NumberOfWetIndexes();
-           
+
         }
-        
+
         public static int InitialDirections()
         {
             Console.WriteLine("All the Possible Way to Start : {0}", ways);
@@ -44,13 +43,13 @@ namespace WaterinMatirx
             Console.WriteLine("Number of Indexes can Travel : {0}", allways);
             return allways;
         }
-       private static int AllTheStartWay(int x, int y,
-                                    int width,
-                                    int height)
+        private static int AllTheStartWay(int x, int y,
+                                     int width,
+                                     int height)
         {
 
             APICaller api = new APICaller();
-          
+
             int ways = 0;
             if (x - 1 >= 0 && api.GetValue(x, y) >= api.GetValue(x - 1, y))
             {
@@ -75,33 +74,33 @@ namespace WaterinMatirx
         }
 
 
-        private static void getallthePossibleWayswithDict(int x, int y,
+        private static void GetAllThePossibleWays(int x, int y,
                                     int width,
                                     int height)
         {
-            
+
             APICaller api = new APICaller();
-            int[,] matrix1 = matrix();           
-            int allIndexways = 0;
+            int[,] matrix1 = matrix();
+
             if (x - 1 >= 0 && api.GetValue(x, y) >= api.GetValue(x - 1, y))
             {
-               
-                if (!possiblewaydict.ContainsKey(Tuple.Create(x-1, y)))
+
+                if (!possiblewaydict.ContainsKey(Tuple.Create(x - 1, y)))
                 {
-                    
-                    possiblewaydict.Add(Tuple.Create(x-1,y), api.GetValue(x - 1, y));
-                    allIndexways += 1;
-                    getallthePossibleWayswithDict(x - 1, y, width, height);
-                    
+
+                    possiblewaydict.Add(Tuple.Create(x - 1, y), api.GetValue(x - 1, y));
+
+                    GetAllThePossibleWays(x - 1, y, width, height);
+
                 }
             }
             if (x + 1 < width && api.GetValue(x, y) >= api.GetValue(x + 1, y))
             {
-                if (!possiblewaydict.ContainsKey(Tuple.Create(x+1, y)))
+                if (!possiblewaydict.ContainsKey(Tuple.Create(x + 1, y)))
                 {
-                    possiblewaydict.Add(Tuple.Create(x+1, y), api.GetValue(x + 1, y));
-                    allIndexways += 1;
-                    getallthePossibleWayswithDict(x + 1, y, width, height);
+                    possiblewaydict.Add(Tuple.Create(x + 1, y), api.GetValue(x + 1, y));
+
+                    GetAllThePossibleWays(x + 1, y, width, height);
 
                 }
 
@@ -109,22 +108,20 @@ namespace WaterinMatirx
             }
             if (y - 1 >= 0 && api.GetValue(x, y) >= api.GetValue(x, y - 1))
             {
-                if (!possiblewaydict.ContainsKey(Tuple.Create(x, y-1)))
+                if (!possiblewaydict.ContainsKey(Tuple.Create(x, y - 1)))
                 {
-                    possiblewaydict.Add(Tuple.Create(x, y-1), api.GetValue(x, y - 1));
-                    allIndexways += 1;
-                    getallthePossibleWayswithDict(x, y - 1, width, height);
+                    possiblewaydict.Add(Tuple.Create(x, y - 1), api.GetValue(x, y - 1));
+                    GetAllThePossibleWays(x, y - 1, width, height);
                 }
 
 
             }
             if (y + 1 < height && api.GetValue(x, y) >= api.GetValue(x, y + 1))
             {
-                if (!possiblewaydict.ContainsKey(Tuple.Create(x, y+1)))
+                if (!possiblewaydict.ContainsKey(Tuple.Create(x, y + 1)))
                 {
-                    possiblewaydict.Add(Tuple.Create(x, y+1), api.GetValue(x, y + 1));
-                    allIndexways += 1;
-                    getallthePossibleWayswithDict(x, y + 1, width, height);
+                    possiblewaydict.Add(Tuple.Create(x, y + 1), api.GetValue(x, y + 1));
+                    GetAllThePossibleWays(x, y + 1, width, height);
                 }
 
 
@@ -136,7 +133,7 @@ namespace WaterinMatirx
 
         }
 
-       
+
 
         static void printarray()
         {
@@ -157,7 +154,7 @@ namespace WaterinMatirx
             APICaller api = new APICaller();
             int matrixwidth = api.GetMatrixWidth();
             int matrixHeight = api.GetMatrixHeight();
-            
+
             int[,] array2Da = new int[matrixHeight, matrixwidth];
             for (int i = 0; i < matrixHeight; i++)
             {
